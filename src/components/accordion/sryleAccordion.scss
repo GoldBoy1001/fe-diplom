@@ -1,0 +1,174 @@
+// ========================= Стили для аккордеона ========================
+
+/* Стили для плюса и минуса */
+.icon {
+	font-size: 20px;
+	margin-left: auto;
+	transition: transform 0.3s ease;
+	width: 32px;
+	height: 32px;
+
+ }
+ .icon.plus{
+	position: relative;
+	transition: .3s !important;
+ }
+ .icon.plus::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('../../img/svg/plus.svg') 50% no-repeat;
+ }
+ .icon.plus:hover::before {
+	background: url('../../img/svg/plus-hover.svg') 50% no-repeat;
+ }
+
+ .icon.plus:active::before{
+	background: url('../../img/svg/plus-active.svg') 50% no-repeat;
+ }
+ .icon.minus{
+	position: relative;
+ }
+ .icon.minus::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 100%;
+	background: url('../../img/svg/round-plus.svg') 0 0  no-repeat;
+ }
+ .icon.minus:hover:before {
+	background: url('../../img/svg/round-plusact.svg') 0 0 no-repeat;
+ }
+ .icon.minus:active:before {
+
+	background: url('../../img/svg/round-minus.svg') 0 0 no-repeat;
+ }
+ 
+ .accordion {
+	padding: 27px 34px 30px 27px;
+ }
+ 
+ .accordion-item {
+	display: grid;
+	grid-template-columns: 32px 1fr;
+	overflow: hidden;
+	row-gap: 10px;
+ }
+ 
+ .accordion-header {
+	padding-left: 12px;
+	display: flex;
+	align-items: center;
+	font-family: Roboto;
+	font-size: 30px;
+	font-weight: 700;
+	cursor: pointer;
+	color: #FFF;
+	
+ }
+ .accordion-img{
+	align-self: center;
+ }
+ .accordion-content {
+	grid-column: 1/3;
+	max-height: 0;
+	overflow: hidden;
+	transition: 0.3s ease;
+ }
+ 
+ /* Стили для открытого элемента аккордеона */
+ .accordion-item.open .accordion-header {
+	// background-color: #ddd;
+ }
+ 
+ .accordion-item.open .accordion-content {
+	max-height: 500px; /* Установите максимальную высоту, которую вы хотите для содержания аккордеона */
+	// overflow: visible;
+ }
+ 
+ // ==============================================================
+
+ .accordion__horizontal-slider{
+	
+	margin: 10px 0px;
+	width: 100%;
+	height: 12px;
+	border-radius: 8px;
+	border: 1px solid #C4C4C4;
+	position: relative;
+}
+
+.accordion__horizontal-slider .accordion__example-track{
+	// top: 20px;
+	height: 10px;
+	border-radius: 8px;
+	
+	// background: #FFA800;
+}
+.accordion__example-track.accordion__example-track-0 {
+	background: #3E3C41;
+}
+.accordion__example-track.accordion__example-track-1 {
+	background: #FFA800;
+}
+
+.accordion__horizontal-slider .accordion__example-thumb{
+	top: -4px;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	background-color: #fff;
+	color: #E5E5E5;
+	border-radius: 50%;
+	cursor: pointer;
+	line-height: 74px;
+
+}
+.accordion__example-thumb-1::before {
+	content: attr(data-value);
+	margin-left: -20px;
+ }
+.accordion-drop + .accordion-drop{
+	margin-top: 45px;
+}
+
+.accordion-switch{
+	display: grid;
+	grid-template: auto / repeat(2,1fr);
+	&__min{
+		grid-row: 2/3;
+		grid-column: 1/2;
+		color: #E5E5E5;
+		font-size: 16px;
+	}
+	&__max{
+		grid-row: 2/3;
+		grid-column: 3/4;
+		color: #E5E5E5;
+		font-size: 16px;
+		min-height: 19px;
+	}
+	.accordion__horizontal-slider{
+		grid-column: 1/4;
+	}
+	.accordion__horizontal-slider .accordion__example-thumb{
+		font-size: 16px;
+		line-height: 70px;
+	}
+}
+
+.accordion-content__title{
+	color: #E5E5E5;
+	font-size: 24px;
+	font-weight: 400;
+
+}
+
+.accordion-content__title-right{
+	text-align: right;
+}

@@ -1,0 +1,74 @@
+.tickets {
+
+	// .tickets__pagination
+
+	&__pagination {
+	}
+}
+.pagination {
+	margin-top: 100px;
+	// .pagination__list
+
+	&__list {
+		display: flex;
+		justify-content: end;
+		column-gap: 35px;
+	}
+
+	// .pagination__item
+
+	&__item {
+		cursor: pointer;
+		width: 85px;
+		height: 75px;
+		border-radius: 5px;
+		border: 2px solid #C4C4C4;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: .3s;
+		&:hover {
+			background: #FFA800;
+			border-color: #FFA800;
+		}
+	}
+
+	// .pagination__link
+
+	&__link {
+		color: #928F94;
+		font-size: 30px;
+		font-weight: 700;
+		transition: .3s;
+		
+	}
+	&__item {
+		&:hover .pagination__link {
+			color: #fff;
+		}
+	}
+	&__prev{
+		cursor: pointer;
+
+		width: 85px;
+		height: 75px;
+		border-radius: 5px;
+		border: 2px solid #C4C4C4;
+		background: url('../../img/svg/pagin-prev.svg') 50% 50% no-repeat;
+	}
+	&__next {
+		cursor: pointer;
+		width: 85px;
+		height: 75px;
+		border-radius: 5px;
+		border: 2px solid #C4C4C4;
+		background: url('../../img/svg/pagin-next.svg') 50% 50% no-repeat;
+	}
+}
+
+.pagination__item-active{
+	border-color: #FFA800;
+}
+.pagination__item-active .pagination__link{
+	color: #FFA800;
+}

@@ -1,0 +1,57 @@
+.content {
+	background: #F7F5F9;
+	display: grid;
+	grid-template: auto / 1fr minmax(auto, 1400px) 1fr;
+	// .content__body
+
+	&__body {
+		padding: 90px 0px 190px 0px;
+		grid-column: 2/3;
+		display: grid;
+		grid-template: auto / 360px 1fr;
+		column-gap: 86px;
+		grid-template-areas: 
+		"bar filter"
+		"bar tickets"
+		". tickets"
+		". tickets"
+		;
+	}
+
+	// .content__filters
+
+	&__filters {
+		grid-area: filter;
+	}
+
+	// .content__side-bar
+
+	&__aside {
+		grid-area: bar;
+	}
+
+	// .content__tickets
+
+	&__tickets {
+		
+		grid-area: tickets;
+		overflow: hidden;
+		// min-width: 0;
+	}
+}
+
+
+
+
+// ================ passengers  ================================
+
+.content {
+
+	// .content__passengers
+
+	&__passengers {
+		grid-area: tickets;
+	}
+}
+.passengers {
+}

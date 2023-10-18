@@ -1,0 +1,33 @@
+@import 'nulestyle.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+
+
+
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 24px;
+	font-weight: 400;
+	background-color: #fff;
+	
+}
+#root{
+	height: 100%;
+}
+.wrapper{
+	min-height: 100%;
+	display: grid;
+	grid-template: minmax(160px, auto) 1fr minmax(300px, auto) / 1fr;
+	overflow: hidden;
+	grid-template-areas:
+	 "header"
+	 "main"
+	 "footer"
+} 
+.main {
+	grid-area: main;
+	margin-top: -160px;
+}
+.footer {
+	grid-area: footer;
+}

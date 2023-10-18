@@ -1,0 +1,263 @@
+// ============= Tickets ====================
+
+.content {
+
+	// .content__tickets
+
+	&__tickets {
+		display: grid;
+		row-gap: 50px;
+		min-width: 0;
+	}
+}
+.tickets {
+	display: grid;
+	grid-template: auto / 0.4fr 1fr 0.6fr;
+	border: 1px solid #C4C4C4;
+	background: #FFF;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.30);
+	min-width: 0;
+	// .tickets__direction
+
+	&__direction {
+		background: #E4E0E9;
+		color: #292929;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 50px 25px 90px 0px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+	}
+
+	// .tickets__time
+
+	&__time {
+		padding: 55px 10px 80px 10px;
+	}
+
+	// .tickets__follow-up-time
+
+	&__follow-up-time {
+		display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 6px;
+	}
+
+	// .tickets__cost
+
+	&__cost {
+		border-left: 1px solid #E5E5E5;
+	}
+}
+.direction-tickets {
+	
+	// .direction-tickets__image
+
+	&__image {
+		width: 86px;
+		height: 86px;
+		border: 3px solid #FFF;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 17px;
+	}
+
+	// .direction-tickets__img
+
+	&__img {
+		width: 44px;
+		height: 52px;
+	}
+
+	// .direction-tickets__train-number
+
+	&__train-number {
+		color: #3E3C41;
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 15px;
+	}
+
+	// .direction-tickets__cities
+
+	&__cities {
+		display: flex;
+		flex-direction: column;
+		padding-left: 25px;
+		.city-nn{
+			color: #928F94;
+		}
+	}
+
+	// .direction-tickets__city
+
+	&__city {
+	}
+}
+.time-tickets {
+
+	// .time-tickets__row
+
+	&__row {
+		display: flex;
+		justify-content: center;
+		column-gap: 40px;
+		margin-bottom: 40px;
+	}
+
+	// .time-tickets__there
+
+	&__there {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// .time-tickets__time
+
+	&__time {
+		color: #000;
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 3px;
+	}
+
+	// .time-tickets__city
+
+	&__city {
+		color: #292929;
+		font-size: 18px;
+	}
+
+	// .time-tickets__railway-station
+
+	&__railway-station {
+		color: #928F94;
+		font-size: 16px;
+	}
+
+	// .time-tickets__from
+
+	&__from {
+		display: flex;
+		flex-direction: column;
+	}
+}
+.follow-up-time {
+	// .follow-up-time__time
+	
+	&__time {
+		color: #C4C4C4;
+font-size: 18px;
+margin-bottom: 9px;
+	}
+
+	// .follow-up-time__arrow
+
+	&__arrow {
+		width: 30px;
+		height: 20px;
+	}
+}
+.cost-tickets {
+	padding: 40px 20px 20px 25px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	// .cost-tickets__row
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 12px;
+	}
+
+	// .cost-tickets__view
+
+	&__view {
+		color: #3E3C41;
+		font-size: 16px;
+	}
+
+	// .cost-tickets__quantity
+
+	&__quantity {
+		color: #FFA800;
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	// .cost-tickets__price
+
+	&__price {
+		color: #2D2B2F;
+		font-size: 24px;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		&:after {
+			content: ' \20BD';
+			margin-left: 10px;
+			color: #928F94;
+			font-weight: 300;
+		}
+	}
+
+	// .cost-tickets__min
+
+	&__min {
+		color: #928F94;
+		font-size: 16px;
+		font-weight: 400;
+		margin-right: 10px;
+	}
+
+	// .cost-tickets__extras
+
+	&__extras {
+		margin-top: 30px;
+		display: flex;
+		justify-content: end;
+		flex: 1 1 auto;
+		img{
+			height: 20px;
+			width: 92px;
+		}
+	}
+
+	// .cost-tickets__btn
+
+	&__btn {
+		cursor: pointer;
+		color: #FFF;
+		text-align: center;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 5px;
+		background: #FFA800;
+		padding: 4px 5px 6px 5px;
+		transition: .3s;
+		
+		&:hover{
+			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		}
+		&:active{
+			color: #FFA800;
+			background: #FFF;
+			outline: 1px solid #FFA800;
+			box-shadow: none;
+		}
+	}
+}
+.extras {
+
+	// .extras__wifi
+
+	&__wifi {
+	}
+}
