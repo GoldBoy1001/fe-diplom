@@ -36,13 +36,13 @@ export default function TrainSelection() {
       <Banner img={banner} />
       <section className="content">
         <div className="content__body">
-          <section className="content__passengers">
+          {/* <section className="content__passengers">
             <div className="passengers">
               <PassengersAccordion />
             </div>
-          </section>
+          </section> */}
 
-          {/* {!selectPlaces && <Filters />}
+          {!selectPlaces && <Filters />}
           <SideBar />
           {!selectPlaces && (
             <section className="content__tickets">
@@ -66,7 +66,7 @@ export default function TrainSelection() {
                 end="end"
               />
             </section>
-          )} */}
+          )}
         </div>
       </section>
     </>
