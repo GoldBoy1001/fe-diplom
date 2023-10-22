@@ -1,23 +1,24 @@
-import Tickets from "../components/tickets/tickets";
-import Banner from "../components/banner/banner";
+import Tickets from "../../components/tickets/tickets";
+import Banner from "../../components/banner/banner";
 // import ReactSlider from "react-slider";
 
 import "./styleTrain.scss";
-import banner from "../img/baner1.jpg";
-import Filters from "../components/filters/filters";
+import banner from "../../img/baner1.jpg";
+import Filters from "../../components/filters/filters";
 import { useState, useEffect } from "react";
-import Pagination from "../components/pagination/pagination";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import SideBar from "../components/sideBar/sideBar";
-import ChoiceOfPlaces from "../components/choiceOfPlaces/choiceOfPlaces";
-import PassengersAccordion from "../components/passengersAccordion/passengersAccordion";
-import AccordionDetails from "../components/accordionDetails/accordionDetails";
+import Pagination from "../../components/pagination/pagination";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import SideBar from "../../components/sideBar/sideBar";
+import ChoiceOfPlaces from "../../components/choiceOfPlaces/choiceOfPlaces";
+import PassengersAccordion from "../../components/passengersAccordion/passengersAccordion";
+import AccordionDetails from "../../components/accordionDetails/accordionDetails";
 // import InputDate from "../components/banner/bannerComponents/bannerForm/inputDate/inputDate";
 // import Switch from "../components/switch/switch";
 // import AccordionItem from "../components/accordion/accordionItem";
-import arrow from "../img/svg/bar-arrow.svg";
-import arrow2 from "../img/svg/bar-arrow2.svg";
-import passenger from "../img/svg/passenger.svg";
+// import arrow from "../img/svg/bar-arrow.svg";
+// import arrow2 from "../img/svg/bar-arrow2.svg";
+// import passenger from "../img/svg/passenger.svg";
+import { Link } from "react-router-dom";
 // import DepartureDetails from "../components/accordionDetails/accordionDetailsComponents/departureDetails";
 // import RecentTickets from "../components/recentTickets/recentTickets";
 
@@ -37,10 +38,10 @@ export default function TrainSelection() {
 
   return (
     <>
-      <Banner img={banner} onFurther={further} />
+      <Banner img={banner} />
       <section className="content">
         <div className="content__body">
-          {further && (
+          {/* {further && (
             <aside className="content__bar-details">
               <div className="bar-details">
                 <p className="bar-details__title">Детали поездки</p>
@@ -87,8 +88,8 @@ export default function TrainSelection() {
                 </div>
               </div>
             </aside>
-          )}
-          {further && (
+          )} */}
+          {/* {further && (
             <section className="content__passengers">
               <div className="passengers">
                 <PassengersAccordion title={"Пассажир 1"} />
@@ -98,7 +99,7 @@ export default function TrainSelection() {
                 <span className="passengers__btn">КУПИТЬ БИЛЕТЫ</span>
               </div>
             </section>
-          )}
+          )} */}
 
           {!selectPlaces && <Filters />}
           {!further && <SideBar />}
@@ -123,12 +124,13 @@ export default function TrainSelection() {
                 onAnoterTrains={() => setSelectPlaces(false)}
                 end="end"
               />
-              <span
+              <Link
+                to={"/passengers"}
                 onClick={() => setFurther(true)}
                 className="choice-of-places-btn"
               >
                 ДАЛЕЕ
-              </span>
+              </Link>
             </section>
           )}
         </div>

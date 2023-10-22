@@ -1,0 +1,69 @@
+.passengers-page {
+	background: #F7F5F9;
+	display: grid;
+	grid-template: auto / 1fr minmax(auto, 1400px) 1fr;
+}
+.passengers-body {
+
+	padding: 90px 0px 190px 0px;
+	grid-column: 2/3;
+	display: grid;
+	grid-template: auto / 360px 1fr;
+	column-gap: 86px;
+	grid-template-areas: 
+		"bar passenger"
+		;
+}
+.passengers {
+
+		// .passengers__bar-details
+
+		&__bar-details {
+			grid-area: bar;
+		}
+
+		// .passengers__btn
+
+		&__btn {
+		}
+}
+.bar-details {
+
+		// .bar-details__title
+
+		&__title {
+		}
+
+		// .bar-details__border
+
+		&__border {
+		}
+
+		// .bar-details__there
+
+		&__there {
+		}
+
+		// .bar-details__back
+
+		&__back {
+		}
+
+		// .bar-details__passengers
+
+		&__passengers {
+		}
+
+		// .bar-details__total
+
+		&__total {
+		}
+}
+.content {
+
+		// .content__passengers
+
+		&__passengers {
+			grid-area: passenger;
+		}
+}
