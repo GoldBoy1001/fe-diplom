@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fe-diplom/static/css/main.d08a5163.css",
-    "main.js": "/fe-diplom/static/js/main.9a3bb539.js",
+    "main.css": "/fe-diplom/static/css/main.4b6aa4ab.css",
+    "main.js": "/fe-diplom/static/js/main.f812f153.js",
     "static/media/location.svg": "/fe-diplom/static/media/location.6322a14c04fe852ea8a3.svg",
     "static/media/baner1.jpg": "/fe-diplom/static/media/baner1.63b29154d2d18170739a.jpg",
     "static/media/works-bg.jpg": "/fe-diplom/static/media/works-bg.add0c427968b6f1e0e57.jpg",
@@ -47,6 +47,7 @@
     "static/media/plus.svg": "/fe-diplom/static/media/plus.0a4bd9ddae3f3f5c6cfd.svg",
     "static/media/plus-hover.svg": "/fe-diplom/static/media/plus-hover.27449507644319c9472b.svg",
     "static/media/round-plusact.svg": "/fe-diplom/static/media/round-plusact.ce3cf170de7ab859933a.svg",
+    "static/media/passenger.svg": "/fe-diplom/static/media/passenger.57566db1cc809286a5335f8975001c0e.svg",
     "index.html": "/fe-diplom/index.html",
     "static/media/footer-location.svg": "/fe-diplom/static/media/footer-location.2c9caef992ba27e7cbcf.svg",
     "static/media/pagin-prev.svg": "/fe-diplom/static/media/pagin-prev.6ba0b0e4526d20605a4f.svg",
@@ -55,17 +56,18 @@
     "static/media/train-arrowFrom.svg": "/fe-diplom/static/media/train-arrowFrom.57329e45d52cde6f55f59908317721d1.svg",
     "static/media/bar-arrow.svg": "/fe-diplom/static/media/bar-arrow.a40cbf1d9ce1f4ee5c92d13fc7f25722.svg",
     "static/media/train-arrow.svg": "/fe-diplom/static/media/train-arrow.77c52095dae9b6910b03f4beb0f39a69.svg",
+    "static/media/close.svg": "/fe-diplom/static/media/close.c73aeabc39d17f1d30ff.svg",
     "static/media/bar-arrow2.svg": "/fe-diplom/static/media/bar-arrow2.d8122fac2e6f70a285ed0dd87df5b169.svg",
     "static/media/plus-active.svg": "/fe-diplom/static/media/plus-active.38f4b62a714fe0b635c7.svg",
     "static/media/round-minus.svg": "/fe-diplom/static/media/round-minus.a5ec11273d392014836f.svg",
     "static/media/luxury.svg": "/fe-diplom/static/media/luxury.5a0ad8266bde859d4d9e8b729517d008.svg",
     "static/media/progress-arrow.svg": "/fe-diplom/static/media/progress-arrow.b1abfa742e7a05b0d99b.svg",
     "static/media/luxury-gold.svg": "/fe-diplom/static/media/luxury-gold.21899fd0d86bc1eec43e7c83e7ae6054.svg",
-    "main.d08a5163.css.map": "/fe-diplom/static/css/main.d08a5163.css.map",
-    "main.9a3bb539.js.map": "/fe-diplom/static/js/main.9a3bb539.js.map"
+    "main.4b6aa4ab.css.map": "/fe-diplom/static/css/main.4b6aa4ab.css.map",
+    "main.f812f153.js.map": "/fe-diplom/static/js/main.f812f153.js.map"
   },
   "entrypoints": [
-    "static/css/main.d08a5163.css",
-    "static/js/main.9a3bb539.js"
+    "static/css/main.4b6aa4ab.css",
+    "static/js/main.f812f153.js"
   ]
 }
