@@ -32,6 +32,8 @@
 	position: relative;
 	transition: .3s;
  }
+
+ 
  .passengers__icon.passengers__minus::before {
 	content: '';
 	position: absolute;
@@ -78,16 +80,18 @@
 	color: #292929;
 	display: flex;
 	align-items: center;
+	
 	// justify-content: start;
 	// padding-left: 12px;
 	// display: flex;
 	// align-items: center;
 	// font-family: Roboto;
+	
 	font-size: 30px;
 	cursor: pointer;
 	
  }
- 
+
  .passengers__accordion-img{
 	// align-self: center;
  }
@@ -101,6 +105,7 @@
  /* Стили для открытого элемента аккордеона */
  .passengers__accordion-item.passengers__open .passengers__accordion-header {
 	//  background: #FFF;
+	border-bottom: 1px dashed #928F94;
  }
  
  .passengers__accordion-item.passengers__open .passengers__accordion-content {
@@ -172,12 +177,379 @@
 		border-bottom: 1px solid #E5E5E5;
 	}
 }
-
+.passenger__type{
+	margin: 0px 35px;
+	
+}
 // ============================================
 
 .passenger{
-	padding: 35px;
+	 padding: 35px 0px;
+	 background-color: #fff;
+	 border-bottom: 1px dashed #928F94;
 	&__type{
 		max-width: 280px;
 	}
+	&__data {
+		color: #928F94;
+		font-size: 16px;
+		padding: 45px 35px 33px 35px;
+		border-bottom: 1px dashed #928F94;
+		display: grid;
+	grid-template: auto / repeat(9, 1fr);
+	column-gap: 25px;
+	row-gap: 65px;
+	grid-template-areas: 
+	"surname surname surname  name name name patronymic patronymic patronymic"
+	"gender gender  year-of-birth year-of-birth year-of-birth . . . ."
+	"checkbox checkbox checkbox checkbox . . . . ."
+	;
+	input{
+		color: #292929;
+		font-size: 24px;
+		border-radius: 5px;
+		border: 1px solid #928F94;
+	}
+	}
+	&__border{
+		display: block;
+		height: 1px;
+		background: #928F94;
+	}
 }
+
+.data {
+	
+
+	// .data__surname
+
+	&__surname {
+		grid-area: surname;
+		// display: grid;
+		// grid-template-columns: repeat(3, 1fr);
+	}
+
+	// .data__label
+
+	&__label {
+		display: block;
+		margin-bottom: 8px;
+		cursor: pointer;
+	}
+
+	// .data__name
+
+	&__name {
+		grid-area: name;
+	}
+
+	// .data__patronymic
+
+	&__patronymic {
+		grid-area: patronymic;
+	}
+
+	// .data__gender
+
+	&__gender {
+		grid-area: gender;
+		.data__label{
+			margin-bottom: 17px;
+		}
+	}
+
+	// .data__gender-man
+	&__gender-woman,
+	&__gender-man {
+		cursor: pointer;
+		color: #000;
+		font-size: 30px;
+		font-weight: 900;
+		text-transform: uppercase;
+		padding: 8px 30px;
+		transition: .3s;
+		&:hover{
+			border-color: #FFA800;
+		}
+	}
+
+	&__gender-man{
+		border-radius: 5px 0px 0px 5px;
+		border: 1px solid #928F94;
+	}
+
+	// .data__gender-woman
+
+	&__gender-woman {
+		border-radius: 0px 5px 5px 0px;
+		border: 1px solid #928F94;
+	}
+	&__gender-active{
+		background: #FFA800;
+	}
+
+
+	// .data__year-of-birth
+
+	&__year-of-birth {
+		grid-area: year-of-birth;
+		input {
+			font-size: 18px;
+		}
+	}
+
+	// .data__year-of-birth-input
+
+	&__year-of-birth-input {
+		
+	}
+
+	// .data__checkbox
+
+	&__checkbox {
+		grid-area: checkbox;
+		display: flex;
+		input{
+			width: 28px;
+		height: 28px;
+		border-radius: 5px;
+		border: 1px solid #928F94;
+		}
+	}
+	// .data__checkbox-check
+
+	 &__checkbox-check {
+		margin-right: 20px;
+	}
+
+	// .data__checkbox-text
+
+	&__checkbox-text {
+		color: #292929;
+		font-size: 18px;
+	}
+}
+
+// ====================================================
+
+.passenger {
+
+	// .passenger__document
+
+	&__document {
+		display: grid;
+		grid-template: auto / repeat(4, 1fr);
+		column-gap: 35px;
+		grid-template-areas: 
+		"document-select document-series document-number ."
+		;
+	}
+
+	// .passenger__document-select
+
+	&__document-select {
+		grid-area: document-select;
+	}
+
+	// .passenger__document-label
+
+	&__document-label {
+		color: #928F94;
+		font-size: 16px;
+	}
+	&__document-label1 {
+	}
+	&__document-label2 {
+	}
+	&__document-label3 {
+	}
+	
+
+	// .passenger__document-series
+
+	&__document-series {
+		grid-area: document-series;
+	}
+
+	// .passenger__document-number
+
+	&__document-number {
+		grid-area: document-number;
+	}
+}
+
+
+// ==================================================
+
+.select-document{
+	
+	&__control{
+		
+		background-color: transparent !important;
+		padding: 10px 13px 14px 13px;
+		border-color: #928F94 !important;
+		box-shadow: none !important;
+		min-height: 0px !important;
+		&--menu-is-open{
+			border-color: #fff !important;
+		}
+		
+	}
+	
+	&__value-container{
+		padding: 0 !important;
+		cursor: pointer;
+		width: 139px;
+		&--has-value{
+			color: #292929 !important;
+		}
+	}
+	&__input-container{
+		color: #F7F5F9;
+		
+	}
+	&__indicator-separator {
+		display: none !important;
+	}
+	&__indicators {
+		cursor: pointer !important;
+		// display: none !important;
+	}
+	&__menu {
+		background-color: #F4F3F6 !important;
+		color: #fff !important;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+		position: absolute !important;
+		top: -5px !important;
+		left: 3px !important;
+		// width: 100% !important;
+		// height: 100% !important;
+		&--is-open{
+			color: #000 !important;
+		}
+	}
+	&__option {
+		cursor: pointer !important;
+		background: transparent !important;
+		color: #3E3C41 !important; 
+		transition: .1s !important;
+		&--is-focused {
+			background: #FFCA62 !important;
+			color: #fff !important;
+		}
+		
+	}
+	&__option:nth-last-child(1n + 2){
+		border-bottom: 1px solid #E5E5E5;
+	}
+}
+.passenger__type{
+	margin: 0px 35px;
+}
+
+// ===================================================
+
+.passenger {
+	
+		// .passenger__document
+
+		&__document {
+			padding: 35px 35px 0px 35px;
+			display: grid;
+			grid-template: auto / repeat(4,1fr);
+			input{
+				border-radius: 5px;
+				border: 1px solid #928F94;
+				color: #292929;
+				font-size: 24px;
+			}
+		}
+
+		// .passenger__document-select
+
+		&__document-select {
+			align-self: end;
+			grid-column: 1/2;
+			grid-row: 1/2;
+		}
+		.passenger__document-select-certificate{
+			grid-column: 1/3;
+		}
+		// .passenger__document-label
+
+		&__document-label {
+			margin-bottom: 10px;
+			display: inline-block;
+		}
+
+		// .passenger__document-label1
+
+		&__document-label1 {
+		}
+
+		// .passenger__document-label2
+
+		&__document-label2 {
+		}
+
+		// .passenger__document-series
+
+		&__document-series {
+			grid-column: 2/3;
+			grid-row: 1/2;
+		}
+		&__document-input {
+		}
+
+		// .passenger__document-label3
+
+		&__document-label3 {
+		}
+
+		// .passenger__document-number
+		&__document-numbers{
+			grid-row: 1/2;
+			grid-column: 3/4;
+		}
+		&__document-number {
+		}
+}
+
+
+// ========================================================
+
+.passenger {
+
+	// .passenger__btn
+	&__button{
+		display: flex;
+		justify-content: flex-end;
+		padding: 39px 31px 28px 31px;
+		background: #fff;
+	}
+	&__btn {
+		display: inline-block;
+		cursor: pointer;
+		justify-content: flex-end;
+		color: #292929;
+		// text-align: center;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 5px;
+		border: 1px solid #292929;
+		padding: 11px 24px;
+		transition: .3s;
+		&:hover{
+			color: #FFA800;
+			border-radius: 5px;
+			border: 1px solid #292929;
+			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		}
+		&:active {
+			background-color: #FFA800;
+			background: #FFA800;
+			color: #292929;
+		}
+	}
+}
+

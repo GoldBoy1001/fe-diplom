@@ -1,0 +1,90 @@
+.bar-details {
+
+	// .bar-details__detail
+
+	&__detail {
+		color: #FFF;
+		font-size: 18px;
+	}
+}
+.detail-bar {
+	padding-top: 45px;
+	display: grid;
+	grid-template: auto / repeat(2, 1fr) 40px repeat(2, 1fr);
+	grid-template-areas: 
+	". on-the-way  on-the-way  on-the-way  ."
+	"departure departure img arrival arrival"
+	"cityes-from cityes-from . cityes-where cityes-where"
+	;
+	row-gap: 15px;
+	// .detail-bar__on-the-way
+
+	&__on-the-way {
+		color: #E5E5E5;
+		grid-area: on-the-way;
+		justify-self: center;
+	}
+
+	// .detail-bar__time
+
+	&__time {
+	}
+
+	// .detail-bar__date
+	&__cityes-station,
+	&__date {
+		color: #928F94;
+	}
+
+	// .detail-bar__departure
+
+	&__departure {
+		grid-area: departure;
+	}
+	&__arrival {
+		grid-area: arrival;
+		justify-self: end;
+		text-align: right;
+	}
+	&__departure,
+	&__arrival{
+		display: flex;
+		flex-direction: column
+	}
+	// .detail-bar__img
+
+	&__img {
+		grid-area: img;
+		justify-self: center;
+	}
+
+	// .detail-bar__cityes-from
+
+	&__cityes-from {
+		grid-area: cityes-from;
+	}
+
+	&__cityes-from,
+	&__cityes-where{
+		display: flex;
+		flex-direction: column;
+	}
+	// .detail-bar__cityes-city
+
+	&__cityes-city {
+		flex: 1 1 auto;
+	}
+
+	// .detail-bar__cityes-station
+
+	&__cityes-station {
+	}
+
+	// .detail-bar__cityes-where
+
+	&__cityes-where {
+		grid-area: cityes-where;
+		justify-self: end;
+		text-align: right;
+	}
+}

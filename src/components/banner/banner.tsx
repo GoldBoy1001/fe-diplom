@@ -6,9 +6,10 @@ import Progress_bar from "./bannerComponents/ProgressBar/ProgressBar";
 
 interface ImgBannerProps {
   img: string;
+  onFurther: boolean;
 }
 
-export default function Banner({ img }: ImgBannerProps) {
+export default function Banner({ img, onFurther }: ImgBannerProps) {
   const { pathname } = useLocation();
 
   return (
@@ -36,7 +37,7 @@ export default function Banner({ img }: ImgBannerProps) {
             <div
               className={
                 pathname === "/train"
-                  ? "progress__item item-progress1 progress1"
+                  ? "progress__item item-progress1 progress1 "
                   : "progress__item item-progress1"
               }
             >
@@ -45,7 +46,13 @@ export default function Banner({ img }: ImgBannerProps) {
               </p>
               <span className="bg"></span>
             </div>
-            <div className="progress__item item-progress2">
+            <div
+              className={
+                onFurther
+                  ? "progress__item item-progress2 progress2"
+                  : "progress__item item-progress2"
+              }
+            >
               <p className="progress__text">
                 <span className="progress__num">2</span>Пассажиры
               </p>

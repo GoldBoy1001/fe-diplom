@@ -8,7 +8,7 @@ import banner from "../img/baner1.jpg";
 export default function Home() {
   return (
     <>
-      <Banner img={banner} />
+      <Banner img={banner} onFurther={false} />
       <About />
       <Works />
       <Reviews />

@@ -1,0 +1,141 @@
+// ========================= Стили для аккордеона ========================
+
+/* Стили для плюса и минуса */
+.icon {
+	font-size: 20px;
+	margin-left: auto;
+	transition: transform 0.3s ease;
+	width: 32px;
+	height: 32px;
+
+ }
+ .icon.plus{
+	position: relative;
+	transition: .3s !important;
+ }
+ .icon.plus::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('../../img/svg/plus.svg') 50% no-repeat;
+ }
+ .icon.plus:hover::before {
+	background: url('../../img/svg/plus-hover.svg') 50% no-repeat;
+ }
+
+ .icon.plus:active::before{
+	background: url('../../img/svg/plus-active.svg') 50% no-repeat;
+ }
+ .icon.minus{
+	position: relative;
+ }
+ .icon.minus::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 100%;
+	background: url('../../img/svg/round-plus.svg') 0 0  no-repeat;
+ }
+ .icon.minus:hover:before {
+	background: url('../../img/svg/round-plusact.svg') 0 0 no-repeat;
+ }
+ .icon.minus:active:before {
+
+	background: url('../../img/svg/round-minus.svg') 0 0 no-repeat;
+ }
+ 
+ .accordion {
+	padding: 27px 34px 30px 27px;
+ }
+ 
+ .accordion-item {
+	display: grid;
+	grid-template-columns: 32px 1fr;
+	overflow: hidden;
+	row-gap: 10px;
+ }
+ 
+ .accordion-header {
+	padding-left: 12px;
+	display: flex;
+	align-items: center;
+	font-family: Roboto;
+	font-size: 30px;
+	font-weight: 700;
+	cursor: pointer;
+	color: #FFF;
+	
+ }
+ .accordion-img{
+	align-self: center;
+ }
+ .accordion-content {
+	grid-column: 1/3;
+	max-height: 0;
+	overflow: hidden;
+	transition: 0.3s ease;
+ }
+ 
+ /* Стили для открытого элемента аккордеона */
+ .accordion-item.open .accordion-header {
+	// background-color: #ddd;
+ }
+ 
+ .accordion-item.open .accordion-content {
+	max-height: 500px; /* Установите максимальную высоту, которую вы хотите для содержания аккордеона */
+	// overflow: visible;
+ }
+
+
+ // ================================================
+
+ .bar-details {
+
+	// .bar-details__drop
+
+	&__drop {
+		padding: 50px 0px 0px 0px;
+		color: #E5E5E5;
+		font-size: 18px;
+		display: grid;
+		grid-template: auto / repeat(2, 1fr);
+		row-gap: 22px;
+		column-gap: 10px;
+	}
+
+	// .bar-details__drop-numbers
+
+	&__drop-numbers {
+	}
+
+	// .bar-details__drop-num
+	&__drop-num,
+	&__drop-subtitle{
+		color: #FFF;
+		text-align: right;
+		font-size: 24px;
+		font-weight: 700;
+	}
+
+	&__drop-num {
+	}
+	
+	// .bar-details__drop-title
+
+	&__drop-title {
+	}
+
+	// .bar-details__drop-subtitle
+
+	&__drop-subtitle {
+		font-size: 16px;
+		span{
+			font-size: 24px;
+		}
+	}
+}
