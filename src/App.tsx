@@ -4,7 +4,9 @@ import Home from "./pages/home";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import TrainSelection from "./pages/trainSelection/trainSelection";
-import Passengers from "./pages/passengers/passengers";
+import Passengers from "./pages/passengers";
+import TicketPayment from "./pages/ticketPayment";
+import Check from "./pages/check";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/train" element={<TrainSelection />} />
           <Route path="/passengers" element={<Passengers />} />
+          <Route path="/payment" element={<TicketPayment />} />
+          <Route path="/check" element={<Check />} />
         </Routes>
       </main>
       <Footer />

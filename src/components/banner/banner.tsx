@@ -47,7 +47,9 @@ export default function Banner({ img }: ImgBannerProps) {
             </div>
             <div
               className={
-                pathname === "/passengers"
+                pathname === "/passengers" ||
+                pathname === "/payment" ||
+                pathname === "/check"
                   ? "progress__item item-progress2 progress2"
                   : "progress__item item-progress2"
               }
@@ -57,13 +59,25 @@ export default function Banner({ img }: ImgBannerProps) {
               </p>
               <span className="bg"></span>
             </div>
-            <div className="progress__item item-progress3">
+            <div
+              className={
+                pathname === "/payment" || pathname === "/check"
+                  ? "progress__item item-progress3 progress3 "
+                  : "progress__item item-progress3 "
+              }
+            >
               <p className="progress__text">
                 <span className="progress__num">3</span>Оплата
               </p>
               <span className="bg"></span>
             </div>
-            <div className="progress__item item-progress4">
+            <div
+              className={
+                pathname === "/check"
+                  ? "progress__item item-progress4 progress4"
+                  : "progress__item item-progress4"
+              }
+            >
               <p className="progress__text">
                 <span className="progress__num">4</span>Проверка
               </p>

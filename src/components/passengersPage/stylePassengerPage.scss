@@ -1,0 +1,259 @@
+.passengers-page {
+	background: #F7F5F9;
+	display: grid;
+	grid-template: auto / 1fr minmax(auto, 1400px) 1fr;
+}
+.passengers-body {
+
+	padding: 90px 0px 190px 0px;
+	grid-column: 2/3;
+	display: grid;
+	grid-template: auto / 360px 1fr;
+	column-gap: 86px;
+	grid-template-areas: 
+		"bar passenger"
+		". btn"
+		;
+}
+.passengers {
+
+		// .passengers__bar-details
+
+		&__bar-details {
+			grid-area: bar;
+		}
+
+		// .passengers__btn
+
+		&__btn {
+		}
+}
+.bar-details {
+
+		// .bar-details__title
+
+		&__title {
+		}
+
+		// .bar-details__border
+
+		&__border {
+		}
+
+		// .bar-details__there
+
+		&__there {
+		}
+
+		// .bar-details__back
+
+		&__back {
+		}
+
+		// .bar-details__passengers
+
+		&__passengers {
+		}
+
+		// .bar-details__total
+
+		&__total {
+		}
+}
+.content {
+
+		// .content__passengers
+
+		&__passengers {
+			grid-area: passenger;
+		}
+}
+
+
+// ============================================
+
+.personal-data {
+	color: #292929;
+	border: 1px solid #C4C4C4;
+	background: #FFF;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+	display: grid;
+	// .personal-data__title
+	&__btn{
+		grid-area: btn;
+		margin-top: 106px;
+	justify-self: end;
+	padding: 15px 70px;
+	cursor: pointer;
+	color: #FFF;
+	font-size: 24px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 5px;
+	background: #FFA800;
+	transition: .3s;
+	&:hover{
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	}
+	&:active{
+		outline: 1px solid #FFA800;
+		color: #FFA800;
+		background: transparent;
+	}
+	}
+	&__title {
+		font-size: 30px;
+		background: #F9F9F9;
+		padding: 35px;
+	}
+	&__border{
+		height: 1px;
+		border:1px dashed #928F94;
+	}
+	// .personal-data__form
+
+	&__form {
+		
+	}
+}
+.form-personal {
+	
+	// .form-personal__surname
+	&__body{
+		padding: 30px 35px 83px 35px;
+	display: grid;
+	grid-template: auto / repeat(6, 1fr);
+	grid-template-areas: 
+	"surname surname name name patronymic patronymic"
+	"tel tel tel . . ."
+	"email email email . . ."
+	;
+	column-gap: 25px;
+	row-gap: 38px;
+	input{
+		border-radius: 5px;
+		border: 1px solid #928F94;
+		color: #292929;
+		font-size: 24px;
+		&::placeholder {
+			font-size: 24px;
+		}
+	}
+	}
+
+	&__surname {
+		grid-area: surname;
+	}
+
+	// .form-personal__label
+
+	&__label {
+		display: inline-block;
+		font-size: 16px;
+		margin-bottom: 8px;
+		cursor: pointer;
+	}
+
+	// .form-personal__input
+
+	&__input {
+	}
+
+	// .form-personal__name
+
+	&__name {
+		grid-area: name;
+	}
+
+	// .form-personal__patronymic
+
+	&__patronymic {
+		grid-area: patronymic;
+	}
+
+	// .form-personal__tel
+
+	&__tel {
+		grid-area: tel;
+	}
+
+	// .form-personal__email
+
+	&__email {
+		grid-area: email;
+	}
+
+	// .form-personal__payment
+
+	&__payment {
+	}
+}
+.payment-personal {
+
+	// .payment-personal__title
+
+	&__title {
+		font-size: 30px;
+		background: #F9F9F9;
+		padding: 35px;
+	}
+	&__body{
+		padding: 50px 35px 54px 35px;
+		display: grid;
+		grid-template: auto / repeat(4, 1fr);
+		grid-template-areas: 
+		"checkbox checkbox checkbox checkbox"
+		"card paypal qiwi ."
+		;
+		column-gap: 20px;
+		row-gap: 30px;
+	}
+	// .payment-personal__checkbox
+
+	&__checkbox {
+		display: inline-flex;
+		grid-area: checkbox;
+		input {
+			height: 25px;
+			width: 25px;
+			border-radius: 5px;
+border: 1px solid #928F94;
+background: #FFF;
+		}
+	}
+
+	// .payment-personal__input
+
+	&__input {
+	}
+
+	// .payment-personal__input-text
+
+	&__input-text {
+		color: #928F94;
+		font-size: 24px;
+		margin-left: 20px;
+	}
+
+	// .payment-personal__type
+
+	&__type {
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+	}
+}
+.type-card {
+	grid-area: card;
+	max-width: 184px;
+}
+.type-paypal {
+	grid-area: paypal;
+}
+.type-qiwi {
+	grid-area: qiwi;
+}
+
+.cash{
+	padding: 58px 35px 80px 35px;
+}

@@ -12,6 +12,7 @@ interface AccordionItemProps {
   subtitle?: string;
   sum?: string;
   visible: boolean;
+  arrows: string;
 }
 
 export default function AccordionDetails({
@@ -23,6 +24,7 @@ export default function AccordionDetails({
   subtitle,
   sum,
   visible,
+  arrows,
 }: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,7 +49,7 @@ export default function AccordionDetails({
             <span>{sum}</span>
           </div>
         </div>
-        {visible && <DepartureDetails />}
+        {visible && <DepartureDetails img={arrows} />}
       </div>
     </div>
   );

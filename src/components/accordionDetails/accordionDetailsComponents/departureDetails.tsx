@@ -1,8 +1,10 @@
 import "./departureDetails.scss";
 
-import arrow from "../../../img/svg/bar-arrow.svg";
+interface DepartureDetailsProps {
+  img: string;
+}
 
-export default function DepartureDetails() {
+export default function DepartureDetails({ img }: DepartureDetailsProps) {
   return (
     <div className="bar-details__detail">
       <div className="detail-bar">
@@ -17,7 +19,7 @@ export default function DepartureDetails() {
           <span className="detail-bar__time">00:10</span>
           <span className="detail-bar__date">30.08.2018</span>
         </div>
-        <img className="detail-bar__img" src={arrow} alt="" />
+        <img className="detail-bar__img" src={img} alt="" />
         <div className="detail-bar__cityes-from">
           <span className="detail-bar__cityes-city">Москва </span>
           <span className="detail-bar__cityes-station">Курский вокзал</span>
