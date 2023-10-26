@@ -8,8 +8,10 @@ import arrow2 from "../../img/svg/bar-arrow2.svg";
 import trainArrow from "../../img/svg/train-arrow.svg";
 import trainArrow2 from "../../img/svg/train-arrowFrom.svg";
 import passenger from "../../img/svg/passenger.svg";
+import passangerIcon from "../../img/svg/check-icon.svg";
 
 import { Link, useLocation } from "react-router-dom";
+import Tickets from "../tickets/tickets";
 
 interface PassengersPageProps {
   visible: boolean;
@@ -205,6 +207,128 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
               КУПИТЬ БИЛЕТЫ
             </Link>
           </>
+        )}
+        {pathname === "/check" && (
+          <section className="details-check">
+            <div className="details-ticket">
+              <p className="details-ticket__title">Поезд</p>
+              <Tickets
+                btn={"Изменить"}
+                length={1}
+                loading={false}
+                onSelectPlaces={() => ""}
+              />
+            </div>
+            <div className="check-details">
+              <div className="check-details__passengers">
+                <p className="check-details__passengers-title">Пассажиры</p>
+                <div className="check-details__passengers-list">
+                  <div className="list-passengers">
+                    <div className="list-passengers__item">
+                      <div className="item-passenger">
+                        <div className="item-passenger__icon">
+                          <img
+                            className="item-passenger__icon-img"
+                            src={passangerIcon}
+                            alt="Icon"
+                          />
+                          <span className="item-passenger__icon-type">
+                            Взрослый
+                          </span>
+                        </div>
+                        <div className="item-passenger__descriptions">
+                          <span className="descriptions-passenger__name">
+                            Мартынюк Ирина Эдуардовна
+                          </span>
+                          <span className="descriptions-passenger__gender">
+                            Пол женский
+                          </span>
+                          <span className="descriptions-passenger__date">
+                            Дата рождения 17.02.1985
+                          </span>
+                          <span className="descriptions-passenger__document">
+                            Паспорт РФ 4204 380694
+                          </span>
+                        </div>
+                      </div>
+                      <div className="item-passenger">
+                        <div className="item-passenger__icon">
+                          <img
+                            className="item-passenger__icon-img"
+                            src={passangerIcon}
+                            alt="Icon"
+                          />
+                          <span className="item-passenger__icon-type">
+                            Взрослый
+                          </span>
+                        </div>
+                        <div className="item-passenger__descriptions">
+                          <span className="descriptions-passenger__name">
+                            Мартынюк Ирина Эдуардовна
+                          </span>
+                          <span className="descriptions-passenger__gender">
+                            Пол женский
+                          </span>
+                          <span className="descriptions-passenger__date">
+                            Дата рождения 17.02.1985
+                          </span>
+                          <span className="descriptions-passenger__document">
+                            Паспорт РФ 4204 380694
+                          </span>
+                        </div>
+                      </div>
+                      <div className="item-passenger">
+                        <div className="item-passenger__icon">
+                          <img
+                            className="item-passenger__icon-img"
+                            src={passangerIcon}
+                            alt="Icon"
+                          />
+                          <span className="item-passenger__icon-type">
+                            Взрослый
+                          </span>
+                        </div>
+                        <div className="item-passenger__descriptions">
+                          <span className="descriptions-passenger__name">
+                            Мартынюк Ирина Эдуардовна
+                          </span>
+                          <span className="descriptions-passenger__gender">
+                            Пол женский
+                          </span>
+                          <span className="descriptions-passenger__date">
+                            Дата рождения 17.02.1985
+                          </span>
+                          <span className="descriptions-passenger__document">
+                            Паспорт РФ 4204 380694
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="list-passengers__total">
+                      <div className="total-passengers">
+                        <span className="total-passengers__price">
+                          <span>Всего</span> 7 760
+                        </span>
+                        <span className="total-passengers__btn">Изменить</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="check-payment">
+              <p className="check-payment__tile">Способ оплаты</p>
+              <div className="check-payment__body">
+                <span className="check-payment__type">Наличными</span>
+                <div className="check-payment__button">
+                  <span className="check-payment__btn">Изменить</span>
+                </div>
+              </div>
+            </div>
+            <Link to={"/order"} className="check-btn">
+              подтвердить
+            </Link>
+          </section>
         )}
       </div>
     </div>

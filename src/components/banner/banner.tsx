@@ -15,7 +15,9 @@ export default function Banner({ img }: ImgBannerProps) {
     <>
       <section
         className={
-          pathname === "/" ? "main__banner" : "main__banner main__banner-train"
+          pathname === "/"
+            ? "main__banner"
+            : "main__banner main__banner-train main__banner-bg"
         }
       >
         <div className="banner">
@@ -27,11 +29,11 @@ export default function Banner({ img }: ImgBannerProps) {
             }
           >
             {pathname === "/" && <TitleBanner />}
-            <BannerForm />
+            {pathname !== "/order" && <BannerForm />}
             <img className="directions__image" src={img} alt="Banner" />
           </div>
         </div>
-        {pathname !== "/" && (
+        {pathname !== "/" && pathname !== "/order" && (
           <div className="progress">
             <div
               className={

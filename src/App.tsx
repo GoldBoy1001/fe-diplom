@@ -7,6 +7,7 @@ import TrainSelection from "./pages/trainSelection/trainSelection";
 import Passengers from "./pages/passengers";
 import TicketPayment from "./pages/ticketPayment";
 import Check from "./pages/check";
+import SuccessfulOrder from "./pages/successfulOrder";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/passengers" element={<Passengers />} />
           <Route path="/payment" element={<TicketPayment />} />
           <Route path="/check" element={<Check />} />
+          <Route path="/order" element={<SuccessfulOrder />} />
         </Routes>
       </main>
       <Footer />

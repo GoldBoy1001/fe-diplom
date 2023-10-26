@@ -4,10 +4,12 @@ import train from "../../img/train.png";
 import arrow from "../../img/svg/train-arrow.svg";
 import arrowFrom from "../../img/svg/train-arrowFrom.svg";
 import wifi from "../../img/svg/train-wifi.svg";
+import { useLocation } from "react-router-dom";
 
 interface TicketsProps {
   length: number;
   loading: boolean;
+  btn: string;
   onSelectPlaces: () => void;
 }
 
@@ -15,10 +17,14 @@ export default function Tickets({
   length,
   loading,
   onSelectPlaces,
+  btn,
 }: TicketsProps) {
+  const { pathname } = useLocation();
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
+
   return (
     <>
       {Array.from({ length: length }, (_, index) => (
@@ -121,8 +127,15 @@ export default function Tickets({
               <div className="cost-tickets__extras">
                 <img className="extras__wifi" src={wifi} alt="Иконка wifi" />
               </div>
-              <p onClick={onSelectPlaces} className="cost-tickets__btn">
-                Выбрать места
+              <p
+                onClick={onSelectPlaces}
+                className={
+                  pathname === "/check"
+                    ? "cost-tickets__btn cost-tickets__btn-check"
+                    : "cost-tickets__btn"
+                }
+              >
+                {btn}
               </p>
             </div>
           </div>

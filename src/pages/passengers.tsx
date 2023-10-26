@@ -1,6 +1,6 @@
 import Banner from "../components/banner/banner";
 
-import banner from "../img/baner1.jpg";
+import banner from "../img/banner.jpg";
 import PassengersPage from "../components/passengersPage/passengers-page";
 
 export default function Passengers() {

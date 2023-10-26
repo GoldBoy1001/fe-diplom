@@ -257,3 +257,258 @@ background: #FFF;
 .cash{
 	padding: 58px 35px 80px 35px;
 }
+
+// ========================================
+
+.details-ticket {
+
+	// .details-ticket__title
+
+	&__title {
+		color: #292929;
+		font-size: 30px;
+		padding: 30px;
+		background: #FFF;
+		border: 1px solid #C4C4C4;
+	}
+}
+.details-check{
+	display: grid;
+	row-gap: 45px;
+}
+.check-details {
+	color: #928F94;
+	font-size: 18px;
+	font-weight: 400;
+	border: 1px solid #C4C4C4;
+	background: #FFF;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+	// .check-details__passengers
+
+	&__passengers {
+	}
+
+	// .check-details__passengers-title
+
+	&__passengers-title {
+		color: #292929;
+		font-size: 30px;
+		padding: 32px;
+		border-bottom: 1px solid #928F94;
+	}
+
+	// .check-details__passengers-list
+
+	&__passengers-list {
+	}
+}
+.list-passengers {
+	display: grid;
+	grid-template: auto / 1fr 0.4fr;
+	// .list-passengers__item
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// .list-passengers__total
+
+	&__total {
+		align-self: end;
+	}
+}
+.item-passenger {
+	display: grid;
+	grid-template: auto / 150px 1fr;
+	padding: 30px 0px;
+	border-bottom: 1px solid #E5E5E5;
+	border-right: 1px solid #E5E5E5;
+	// .item-passenger__icon
+
+	&__icon {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .item-passenger__icon-img
+
+	&__icon-img {
+		width: 68px;
+		height: 68px;
+		margin-bottom: 13px;
+	}
+
+	// .item-passenger__icon-type
+
+	&__icon-type {
+		color: #292929;
+	font-size: 18px;
+	}
+
+	// .item-passenger__descriptions
+
+	&__descriptions {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.descriptions-passenger {
+
+	// .descriptions-passenger__name
+
+	&__name {
+		color: #292929;
+		font-size: 18px;
+		margin-bottom: 11px;
+	}
+
+	// .descriptions-passenger__gender
+	&__date,
+	&__gender {
+		margin-bottom: 1px;
+	}
+
+	// .descriptions-passenger__date
+
+	&__date {
+
+	}
+
+	// .descriptions-passenger__document
+
+	&__document {
+	}
+}
+.total-passengers {
+	padding: 25px;
+	align-self: end;
+	display: inline-flex;
+	flex-direction: column;
+	color: #292929;
+	font-size: 24px;
+	font-weight: 700;
+	// .total-passengers__price
+
+	&__price {
+		display: inline-flex;
+		font-size: 30px;
+		margin-bottom: 23px;
+		&::after{
+			content: ' \20BD';
+			font-weight: 300;
+			color: #928F94;
+			margin-left: 10px;
+		}
+		span{
+			align-self: flex-end;
+			font-size: 24px;
+			font-weight: 400;
+			margin-right: auto;
+		}
+	}
+
+	// .total-passengers__btn
+
+	&__btn {
+		cursor: pointer;
+		border-radius: 5px;
+border: 1px solid #292929;
+padding: 5px 60px 12px 60px;
+transition: .3s;
+&:hover{
+	color: #FFA800; 
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+&:active{
+	color: #292929;
+	background: #FFA800;
+	border-color: #FFA800;
+}
+	}
+}
+
+
+.check-payment {
+
+	// .check-payment__tile
+	font-size: 24px;
+	font-weight: 400;
+	border: 1px solid #C4C4C4;
+	background: #FFF;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+	
+	&__body{
+		display: grid;
+		grid-template: auto / 1fr 0.4fr;
+	}
+	&__tile {
+		color: #292929;
+		font-size: 30px;
+		padding: 30px;
+		background: #FFF;
+		 border-bottom: 1px solid #928F94;
+	}
+
+	// .check-payment__type
+
+	&__type {
+		// display: inline-block;
+		padding: 44px 31px 70px 31px;
+		border-right: 1px solid #E5E5E5;
+	}
+
+	// .check-payment__btn
+	&__button {
+		padding: 25px;
+		display: grid;
+	}
+	&__btn {
+		align-self: end;
+		display: inline-block;
+		font-weight: 700;
+		cursor: pointer;
+		border-radius: 5px;
+border: 1px solid #292929;
+padding: 5px 60px 12px 60px;
+transition: .3s;
+&:hover{
+	color: #FFA800; 
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+&:active{
+	color: #292929;
+	background: #FFA800;
+	border-color: #FFA800;
+}
+	}
+}
+
+.check-btn{
+	justify-self: end;
+	cursor: pointer;
+	margin-top: 70px;
+		color: #FFF;
+		text-align: center;
+		font-size: 24px;
+		font-weight: 700;
+		border-radius: 5px;
+		background: #FFA800;
+		padding: 16px 57px;
+		transition: .3s;
+		text-transform: uppercase;
+		&:hover{
+			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		}
+		&:active{
+			color: #FFA800;
+			background: #FFF;
+			outline: 1px solid #FFA800;
+			box-shadow: none;
+		}
+}

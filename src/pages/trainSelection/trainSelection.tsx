@@ -3,7 +3,7 @@ import Banner from "../../components/banner/banner";
 // import ReactSlider from "react-slider";
 
 import "./styleTrain.scss";
-import banner from "../../img/baner1.jpg";
+import banner from "../../img/banner.jpg";
 import Filters from "../../components/filters/filters";
 import { useState, useEffect } from "react";
 import Pagination from "../../components/pagination/pagination";
@@ -109,6 +109,7 @@ export default function TrainSelection() {
                 length={showBy}
                 loading={loading}
                 onSelectPlaces={() => setSelectPlaces(true)}
+                btn={"Выбрать места"}
               />
               <Pagination TotalCount={15} countriesPage={countriesPage} />
             </section>

@@ -90,7 +90,7 @@ export default function ChoiceOfPlaces({
                 src={time}
                 alt="Иконка часов"
               />
-              <div className="follow-up-time__time">
+              <div className="follow-up-time__time-type">
                 <span>9 часов</span>42 минуты
               </div>
             </div>
