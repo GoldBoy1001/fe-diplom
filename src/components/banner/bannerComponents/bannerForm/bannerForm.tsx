@@ -80,13 +80,13 @@ export default function BannerForm() {
   };
   //   console.log(debounce);
 
-  useEffect(() => {
-    if ((city[1] as IDate).date2 && pathname !== "/") {
-      setSelectedDateColor("#292929");
-    } else {
-      setSelectedDateColor("#E5E5E5");
-    }
-  }, [pathname]);
+  //   useEffect(() => {
+  //     if ((city[1] as IDate).date2 && pathname !== "/") {
+  //       setSelectedDateColor("#292929");
+  //     } else {
+  //       setSelectedDateColor("#E5E5E5");
+  //     }
+  //   }, [pathname]);
 
   return (
     <div className="banner__directions">
