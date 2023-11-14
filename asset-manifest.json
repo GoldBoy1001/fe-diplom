@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/fe-diplom/static/css/main.b8a7bd8d.css",
-    "main.js": "/fe-diplom/static/js/main.7ba093e9.js",
+    "main.css": "/fe-diplom/static/css/main.b0cf2bfd.css",
+    "main.js": "/fe-diplom/static/js/main.da1d6324.js",
     "static/media/location.svg": "/fe-diplom/static/media/location.6322a14c04fe852ea8a3.svg",
     "static/media/baner1.jpg": "/fe-diplom/static/media/baner1.63b29154d2d18170739a.jpg",
     "static/media/banner.jpg": "/fe-diplom/static/media/banner.5bda58f00f0695dacfbd.jpg",
     "static/media/works-bg.jpg": "/fe-diplom/static/media/works-bg.add0c427968b6f1e0e57.jpg",
     "static/media/review2.jpg": "/fe-diplom/static/media/review2.40c91847f517424c1241.jpg",
     "static/media/review1.jpg": "/fe-diplom/static/media/review1.60a411dd2450418baeeb.jpg",
+    "static/media/train-top.jpg": "/fe-diplom/static/media/train-top.021f8ec47d67e8a89630.jpg",
+    "static/media/wagon.jpg": "/fe-diplom/static/media/wagon.d1a6fbe40d9c3ed01d8f.jpg",
     "static/media/order-docs.svg": "/fe-diplom/static/media/order-docs.3bd7207f49db63f53fac4078039b14a8.svg",
     "static/media/train-wifi.svg": "/fe-diplom/static/media/train-wifi.a09f84101e84b2d092f97afd3f001395.svg",
     "static/media/conditioner-active.svg": "/fe-diplom/static/media/conditioner-active.1c9a553669a06e173267.svg",
@@ -68,11 +70,11 @@
     "static/media/luxury.svg": "/fe-diplom/static/media/luxury.5a0ad8266bde859d4d9e8b729517d008.svg",
     "static/media/progress-arrow.svg": "/fe-diplom/static/media/progress-arrow.b1abfa742e7a05b0d99b.svg",
     "static/media/luxury-gold.svg": "/fe-diplom/static/media/luxury-gold.21899fd0d86bc1eec43e7c83e7ae6054.svg",
-    "main.b8a7bd8d.css.map": "/fe-diplom/static/css/main.b8a7bd8d.css.map",
-    "main.7ba093e9.js.map": "/fe-diplom/static/js/main.7ba093e9.js.map"
+    "main.b0cf2bfd.css.map": "/fe-diplom/static/css/main.b0cf2bfd.css.map",
+    "main.da1d6324.js.map": "/fe-diplom/static/js/main.da1d6324.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8a7bd8d.css",
-    "static/js/main.7ba093e9.js"
+    "static/css/main.b0cf2bfd.css",
+    "static/js/main.da1d6324.js"
   ]
 }
