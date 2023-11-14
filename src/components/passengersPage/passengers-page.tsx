@@ -212,12 +212,7 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
           <section className="details-check">
             <div className="details-ticket">
               <p className="details-ticket__title">Поезд</p>
-              <Tickets
-                btn={"Изменить"}
-                length={1}
-                loading={false}
-                onSelectPlaces={() => ""}
-              />
+              {/* <Tickets btn={"Изменить"} onSelectPlaces={() => ""} /> */}
             </div>
             <div className="check-details">
               <div className="check-details__passengers">

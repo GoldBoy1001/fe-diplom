@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
@@ -8,15 +8,20 @@ import "./styleFilters.scss";
 import { useActions } from "../../hooks/useActions";
 
 const options: IOptions[] = [
-  { value: "time", label: "времени" },
-  { value: "costs", label: "стоимости" },
-  { value: "durations", label: "длительности" },
+  { value: "date", label: "времени" },
+  { value: "price", label: "стоимости" },
+  { value: "duration", label: "длительности" },
 ];
 
 export default function Filters() {
-  const [value, setValue] = useState("time");
+  const { addSortItem } = useActions();
+  const [value, setValue] = useState("date");
   const [count, setCount] = useState(5);
   const { addNumber } = useActions();
+
+  useEffect(() => {
+    addSortItem(value);
+  }, [value]);
 
   function handlerClick(i: number) {
     setCount(i);

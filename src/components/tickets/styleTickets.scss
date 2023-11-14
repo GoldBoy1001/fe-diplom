@@ -16,7 +16,7 @@
 	border: 1px solid #C4C4C4;
 	background: #FFF;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.30);
-	min-width: 0;
+	// min-width: 0;
 	// .tickets__direction
 
 	&__direction {
@@ -24,11 +24,11 @@
 		color: #292929;
 		font-size: 16px;
 		font-weight: 400;
-		padding: 50px 25px 90px 0px;
+		padding: 50px 25px 0px 0px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
+		text-transform: capitalize;
 	}
 
 	// .tickets__time
@@ -115,6 +115,7 @@
 	&__there {
 		display: flex;
 		flex-direction: column;
+		min-width: 150px;
 	}
 
 	// .time-tickets__time
@@ -129,6 +130,7 @@
 	// .time-tickets__city
 
 	&__city {
+		text-transform: capitalize;
 		color: #292929;
 		font-size: 18px;
 	}
@@ -145,12 +147,15 @@
 	&__from {
 		display: flex;
 		flex-direction: column;
+		min-width: 150px;
 	}
 }
 .follow-up-time {
 	// .follow-up-time__time
-
+	
 	&__time {
+		text-align: center;
+		min-width: 60px;
 		color: #C4C4C4;
 		font-size: 18px;
 		margin-bottom: 9px;
@@ -185,6 +190,7 @@
 	&__view {
 		color: #3E3C41;
 		font-size: 16px;
+		min-width: 75px;
 	}
 
 	// .cost-tickets__quantity
@@ -193,6 +199,64 @@
 		color: #FFA800;
 		font-size: 16px;
 		font-weight: 500;
+		cursor: pointer;
+		position: relative;
+		.cost-tickets__quantity-romb{
+			position: absolute;
+			display: none;
+			top: 120%;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #E5E5E5;
+			transform: rotate(45deg);
+		}
+		.cost-tickets__quantity-drop{
+			display: none;
+			z-index: 10;
+			position: absolute;
+			top: 150%;
+			left: -116px;
+			width: 276px;
+			min-height: 100%;
+			padding: 17px 23px 23px 32px;
+			border-radius: 5px;
+			background: #E5E5E5;
+		}
+		&:hover .cost-tickets__quantity-romb,
+		&:hover .cost-tickets__quantity-drop {
+			display: block;
+	  }
+		.cost-tickets__quantity-drop-item{
+			color: #2D2B2F;
+			font-size: 24px;
+			font-style: normal;
+			font-weight: 700;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			&:after {
+				content: ' \20BD';
+				font-weight: 300;
+				color: #928F94;
+				margin-left: 5px;
+			}
+			span {
+				color: #000;
+				font-size: 16px;
+				font-weight: 400;
+				flex: 1 1 auto;
+				max-width: 84px;
+			}
+			.places-quantity-drop{
+				color: #FFA800;
+						font-size: 16px;
+						font-style: normal;
+						font-weight: 500;
+						margin-left: auto;
+			}
+		}
+		
 	}
 
 	// .cost-tickets__price
@@ -223,7 +287,7 @@
 	// .cost-tickets__extras
 
 	&__extras {
-		margin-top: 30px;
+		margin: 30px 0px;
 		display: flex;
 		justify-content: end;
 		flex: 1 1 auto;

@@ -33,6 +33,7 @@
 	// .recent-tickets__from
 	&__where,
 	&__from {
+		text-transform: capitalize;
 		display: grid;
 		span {
 			margin-top: 5px;

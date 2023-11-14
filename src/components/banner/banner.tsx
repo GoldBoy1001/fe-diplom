@@ -2,7 +2,6 @@ import "./sryleBanner.scss";
 import { useLocation } from "react-router-dom";
 import TitleBanner from "./bannerComponents/titleBanner";
 import BannerForm from "./bannerComponents/bannerForm/bannerForm";
-import Progress_bar from "./bannerComponents/ProgressBar/ProgressBar";
 
 interface ImgBannerProps {
   img: string;

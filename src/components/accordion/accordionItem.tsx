@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./sryleAccordion.scss";
 import ReactSlider from "react-slider";
+import { useActions } from "../../hooks/useActions";
+import { ITimeBack, ITimeThere } from "../../store/time/time.slice";
 
 interface AccordionItemProps {
   title: string;
@@ -9,13 +11,34 @@ interface AccordionItemProps {
 }
 
 export default function AccordionItem({ title, img }: AccordionItemProps) {
-  //   const [discessum, setDiscessum] = useState<number[]>([0, 24]);
-  //   const [arrival, setArrival] = useState<number[]>([0, 24]);
   const [minTime2, setMinTime2] = useState<number>(0);
   const [maxTime2, setMaxTime2] = useState<number>(1440);
   const [minTime, setMinTime] = useState<number>(0);
   const [maxTime, setMaxTime] = useState<number>(1440);
   const [isOpen, setIsOpen] = useState(false);
+  const { addTimeThere, addTimeBack } = useActions();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (title === "Туда") {
+        addTimeThere({
+          startDepartureHourFrom: minTime,
+          startDepartureHourTo: maxTime,
+          startArrivalHourFrom: minTime2,
+          startArrivalHourTo: maxTime2,
+        });
+      } else if (title === "Обратно") {
+        addTimeBack({
+          endDepartureHourFrom: minTime,
+          endDepartureHourTo: maxTime,
+          endArrivalHourFrom: minTime2,
+          endArrivalHourTo: maxTime2,
+        });
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [minTime, minTime2, maxTime, maxTime2, title]);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);

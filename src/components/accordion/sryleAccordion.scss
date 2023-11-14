@@ -39,14 +39,14 @@
 	left: 0;
 	min-width: 100%;
 	height: 100%;
-	background: url('../../img/svg/round-plus.svg') 0 0  no-repeat;
+	background: url('../../img/svg/round-plus.svg') 50%  no-repeat;
  }
  .icon.minus:hover:before {
-	background: url('../../img/svg/round-plusact.svg') 0 0 no-repeat;
+	background: url('../../img/svg/round-plusact.svg') 50% no-repeat;
  }
  .icon.minus:active:before {
 
-	background: url('../../img/svg/round-minus.svg') 0 0 no-repeat;
+	background: url('../../img/svg/round-minus.svg') 50% no-repeat;
  }
  
  .accordion {
