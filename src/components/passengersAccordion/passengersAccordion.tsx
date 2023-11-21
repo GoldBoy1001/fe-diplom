@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 import { IOptions } from "../../models/selectModel";
+import { IDetail } from "../../store/order/order.slice";
 
 import "./passengersAccordion.scss";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const options: IOptions[] = [
   { value: "adult", label: "Взрослый" },
@@ -16,22 +19,98 @@ const optionsDocumen: IOptions[] = [
 ];
 interface PassengersAccordionProps {
   title: string;
+  number?: number;
+  onChangeForm?: (data: any) => void;
 }
 
 export default function PassengersAccordion({
   title,
+  number,
+  onChangeForm,
 }: PassengersAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [valuepas, setValuePas] = useState("adult");
   const [valueDoc, setValueDoc] = useState("pasp");
   const [gender, setGender] = useState("");
+  const { addDetail } = useActions();
+  const seats = useTypedSelector((state) => state.seats);
+  const detail = useTypedSelector((state) => state.order);
+  //   console.log(detail);
 
-  //   const getValue = () => {
-  //     return valuepas ? options.find((c) => c.value === valuepas) : "";
-  //   };
+  const [seat] = seats;
+  const { adultSeats, childrensPlaces } = seat;
+
+  const adultSeatsNum = parseInt(adultSeats, 10) || 0;
+  const childrensNum = parseInt(String(childrensPlaces), 10) || 0;
+  const seatsSum = adultSeatsNum + childrensNum;
+
+  const [formData, setFormData] = useState({
+    name: "",
+    last_name: "",
+    patronymic: "",
+    limited_mobility: "",
+    birthday: "",
+    documentData: "",
+    num: seatsSum,
+    is_adult: "",
+    gender: "",
+    document_data: "",
+    document_dataSeries: "",
+    document_type: "",
+  });
+
+  // ...
+
+  //   useEffect(() => {
+  //     const newDetails: IDetail[] = [];
+
+  //     // Цикл для добавления объектов в зависимости от seatsSum
+  //     newDetails.push({
+  //       name: formData.name,
+  //       last_name: formData.lastName,
+  //       patronymic: formData.patronomic,
+  //       limited_mobility: formData.limited_mobility === "true",
+  //       is_adult: true,
+  //       document_type: valueDoc === "pasp" ? "паспорт" : "свидетельство",
+  //       birthday: formData.birthday,
+  //       document_data: formData.documentData,
+  //       is_child: false,
+  //       include_children_seat: seats[0].without_childrens_seats,
+  //       num: seatsSum,
+  //     });
+
+  //     addDetail(newDetails);
+  //     // Вызываем action для обновления состояния
+  //   }, [gender, formData, seats[0].without_childrens_seats, valuepas, valueDoc]);
+
+  const handleInputChange = (field: string, value: string) => {
+    const updatedData = {
+      ...formData,
+      [field]: value,
+    };
+
+    // Если поле, которое меняется, связано с полом (is_adult)
+    if (field === "gender") {
+      updatedData.gender = value;
+    }
+    if (field === "is_adult") {
+      updatedData.is_adult = value;
+    }
+    if (field === "document_type") {
+      updatedData.document_type = value;
+    }
+
+    // Вызываем onChange с обновленными данными
+    if (onChangeForm) {
+      onChangeForm(updatedData);
+    }
+
+    setFormData(updatedData);
+  };
 
   function onClickGender(i: string) {
     setGender(i);
+    handleInputChange("gender", i);
   }
 
   const getValueDoc = () => {
@@ -44,6 +123,7 @@ export default function PassengersAccordion({
 
   const onChange = (newValue: any) => {
     setValuePas(newValue.value);
+    handleInputChange("is_adult", newValue.value);
     const index = options.findIndex(
       (option) => option.value === newValue.value
     );
@@ -56,6 +136,7 @@ export default function PassengersAccordion({
   };
   const onChangeDoc = (newValue: any) => {
     setValueDoc(newValue.value);
+    handleInputChange("document_type", newValue.value);
     const index = optionsDocumen.findIndex(
       (option) => option.value === newValue.value
     );
@@ -66,19 +147,6 @@ export default function PassengersAccordion({
       optionsDocumen.unshift(removedOption);
     }
   };
-
-  // const onChangeGeneric = (newValue: any, setValue: (value: string) => void, options: IOptions[]) => {
-  // 	setValue(newValue.value);
-  // 	const index = options.findIndex(
-  // 	  (option) => option.value === newValue.value
-  // 	);
-  // 	if (index > -1) {
-  // 	  // Удаляет элемент из текущей позиции
-  // 	  const [removedOption] = options.splice(index, 1);
-  // 	  // Перемещает удаленный элемент на первую позицию
-  // 	  options.unshift(removedOption);
-  // 	}
-  //  };
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
@@ -95,7 +163,7 @@ export default function PassengersAccordion({
             isOpen ? "passengers__minus" : "passengers__plus"
           }`}
         ></div>
-        {title}
+        {number ? `${title} ${number}` : `${title}`}
       </div>
       <div
         className={`passengers__accordion-content ${
@@ -118,19 +186,36 @@ export default function PassengersAccordion({
               <label className="data__label" htmlFor="surname">
                 Фамилия
               </label>
-              <input id="surname" type="text" />
+              <input
+                id="surname"
+                type="text"
+                value={formData.last_name}
+                onChange={(e) => handleInputChange("last_name", e.target.value)}
+              />
             </div>
             <div className="data__name">
               <label className="data__label" htmlFor="name">
                 Имя
               </label>
-              <input id="name" type="text" />
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+              />
             </div>
             <div className="data__patronymic">
               <label className="data__label" htmlFor="patronymic">
                 Отчество
               </label>
-              <input id="patronymic" type="text" />
+              <input
+                id="patronymic"
+                type="text"
+                value={formData.patronymic}
+                onChange={(e) =>
+                  handleInputChange("patronymic", e.target.value)
+                }
+              />
             </div>
             <div className="data__gender">
               <div className="data__label">Пол</div>
@@ -163,10 +248,22 @@ export default function PassengersAccordion({
                 className="data__year-of-birth-input"
                 type="date"
                 id="ear-of-birth"
+                value={formData.birthday}
+                onChange={(e) => handleInputChange("birthday", e.target.value)}
               />
             </div>
             <div className="data__checkbox">
-              <input type="checkbox" className="data__checkbox-check" />
+              <input
+                type="checkbox"
+                className="data__checkbox-check"
+                value={formData.limited_mobility}
+                onChange={(e) =>
+                  handleInputChange(
+                    "limited_mobility",
+                    e.target.checked ? "true" : "false"
+                  )
+                }
+              />
               <span className="data__checkbox-text">
                 ограниченная подвижность
               </span>
@@ -204,6 +301,10 @@ export default function PassengersAccordion({
                   type="text"
                   id="series"
                   className="passenger__document-input"
+                  value={formData.document_dataSeries}
+                  onChange={(e) =>
+                    handleInputChange("document_dataSeries", e.target.value)
+                  }
                 />
               </div>
             )}
@@ -218,12 +319,34 @@ export default function PassengersAccordion({
                 type="text"
                 id="number-document"
                 className="passenger__document-number"
+                value={formData.document_data}
+                onChange={(e) =>
+                  handleInputChange("document_data", e.target.value)
+                }
               />
             </div>
           </div>
         </form>
         <div className="passenger__button">
-          <span className="passenger__btn">Следующий пассажир</span>
+          <span
+            className="passenger__btn"
+            // onClick={() =>
+            //   addDetail({
+            //     last_name: "",
+            //     name: "",
+            //     patronymic: "",
+            //     payment_method: "",
+            //     is_adult: true,
+            //     birthday: "",
+            //     document_type: "",
+            //     document_data: "",
+            //     is_child: false,
+            //     include_children_seat: false,
+            //   })
+            // }
+          >
+            Следующий пассажир
+          </span>
         </div>
       </div>
     </div>

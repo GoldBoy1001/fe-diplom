@@ -19,6 +19,7 @@ import {
 import { Item, Root } from "../../models/ticketsModels";
 import { useActions } from "../../hooks/useActions";
 import { IDate } from "../../models/selectModel";
+import Loading from "../../components/loading/loading";
 
 export default function TrainSelection() {
   const { addcurentPaginate, addChoiceOfPlace, addDirection } = useActions();
@@ -89,7 +90,7 @@ export default function TrainSelection() {
     ? `&end_arrival_hour_to=${(time[1] as ITimeBack).endArrivalHourTo}`
     : "";
 
-  const { data } = useSearchDirectionsQuery(
+  const { data, isLoading } = useSearchDirectionsQuery(
     `?${cytiId1}${cytiId2}&offset=${offset}&limit=${showBy}&sort=${sort}${dateStart}${dateEnd}
 		${firstClass}${secondClass}${thirdClass}${fourthClass}${haveWifi}${haveExpress}
 		${priceFrom}${priceTo}${startHourFrom}${startHourto}${startArrivalHourFrom}${startArrivalHourFrom}
@@ -126,57 +127,60 @@ export default function TrainSelection() {
   return (
     <>
       <Banner img={banner} />
-      <section className="content">
-        <div className="content__body">
-          {!selectPlaces && <Filters />}
-          {!further && <SideBar />}
-          {!selectPlaces && (
-            <section className="content__tickets">
-              {data?.items?.map((ticket: Item) => (
-                <Tickets
-                  key={ticket.departure.train._id}
-                  items={ticket}
-                  onSelectPlaces={() => {
-                    setSelectPlaces(true);
-                    fetchChoiceOfPlsce(`${ticket.departure._id}/seats?`);
-                    addDirection({
-                      train: ticket.departure.train.name,
-                      station: ticket.departure.from.railway_station_name,
-                    });
-                  }}
-                  btn={"Выбрать места"}
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <section className="content">
+          <div className="content__body">
+            {!selectPlaces && <Filters />}
+            {!further && <SideBar />}
+            {!selectPlaces && (
+              <section className="content__tickets">
+                {data?.items?.map((ticket: Item) => (
+                  <Tickets
+                    key={ticket.departure.train._id}
+                    items={ticket}
+                    onSelectPlaces={() => {
+                      setSelectPlaces(true);
+                      fetchChoiceOfPlsce(`${ticket.departure._id}/seats?`);
+                      addDirection({
+                        train: ticket.departure.train.name,
+                        station: ticket.departure.from.railway_station_name,
+                      });
+                    }}
+                    btn={"Выбрать места"}
+                  />
+                ))}
+                <Pagination
+                  onOffsetNext={clickNext}
+                  onOffsetPrev={clickPrev}
+                  TotalCount={data?.total_count}
+                  countriesPerPage={showBy}
                 />
-              ))}
-              <Pagination
-                onOffsetNext={clickNext}
-                onOffsetPrev={clickPrev}
-                TotalCount={data?.total_count}
-                countriesPerPage={showBy}
-              />
-            </section>
-          )}
-          {selectPlaces && !further && (
-            <section className="content__choice-of-places">
-              <p className="choice-of-places__title">Выбор мест</p>
-              <ChoiceOfPlaces
-                onAnoterTrains={() => setSelectPlaces(false)}
-                end=""
-              />
-              {/* <ChoiceOfPlaces
+              </section>
+            )}
+            {selectPlaces && !further && (
+              <section className="content__choice-of-places">
+                <p className="choice-of-places__title">Выбор мест</p>
+                <ChoiceOfPlaces
+                  onAnoterTrains={() => setSelectPlaces(false)}
+                  end=""
+                />
+                {/* <ChoiceOfPlaces
                 onAnoterTrains={() => setSelectPlaces(false)}
                 end="end"
               /> */}
-              <Link
-                to={"/passengers"}
-                onClick={() => setFurther(true)}
-                className="choice-of-places-btn"
-              >
-                ДАЛЕЕ
-              </Link>
-            </section>
-          )}
-        </div>
-      </section>
+                <Link
+                  to={"/passengers"}
+                  onClick={() => setFurther(true)}
+                  className="choice-of-places-btn"
+                >
+                  ДАЛЕЕ
+                </Link>
+              </section>
+            )}
+          </div>
+        </section>
+      )}
     </>
   );
 }

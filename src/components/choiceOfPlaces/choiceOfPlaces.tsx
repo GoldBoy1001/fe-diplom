@@ -19,10 +19,12 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ICity } from "../../models/selectModel";
 import { IChoceOfPlace, ICoach } from "../../models/choiceModel";
 import { useLazySearchDirectionsQuery } from "../../store/ticket/ticket.api";
+import { useActions } from "../../hooks/useActions";
 
 interface ChoiceOfPlacesProps {
   end: string;
   onAnoterTrains: () => void;
+  onSeats?: () => void;
 }
 
 type ButtonName = "button1" | "button2" | "button3" | "button4";
@@ -64,6 +66,8 @@ export default function ChoiceOfPlaces({
   end,
   onAnoterTrains,
 }: ChoiceOfPlacesProps) {
+  const { addSeats } = useActions();
+  const [noSeats, setNoSeats] = useState(false);
   const [adult, setAdult] = useState("");
   const [childlike, setChildlike] = useState("");
   const [isVisible, setIsVisible] = useState(false);
@@ -80,6 +84,14 @@ export default function ChoiceOfPlaces({
   const trainNumber = trainNumbers.replace(/\D/g, "");
 
   const [clickType, setClickType] = useState("");
+
+  useEffect(() => {
+    addSeats({
+      adultSeats: adult,
+      childrensPlaces: childlike,
+      without_childrens_seats: noSeats,
+    });
+  }, [adult, childlike, noSeats]);
 
   function onClickService(buttonName: ButtonName) {
     if (activeButtons.includes(buttonName)) {
@@ -102,7 +114,6 @@ export default function ChoiceOfPlaces({
       "64103a355c49ea004634c6ed/seats?have_third_class=true?have_second_class=true"
     );
   }, [data]);
-  console.log(data);
 
   function onClickType(i: string) {
     setClickType((prevClickType) => (prevClickType === i ? "" : i));
@@ -225,7 +236,12 @@ export default function ChoiceOfPlaces({
                 </p>
               </div>
             </label>
-            <p className="children__btn">
+            <p
+              className={
+                noSeats ? "children__btn children__btn-active" : "children__btn"
+              }
+              onClick={() => setNoSeats(!noSeats)}
+            >
               <span>Детских «без места» — 0</span>
             </p>
           </div>

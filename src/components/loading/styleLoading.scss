@@ -1,0 +1,57 @@
+.loading {
+	
+	// .loading__body
+
+	&__body {
+		background: #3E3C41;
+	}
+
+	// .loading__animated
+
+	&__animated {
+		padding: 261px 0px 340px 0px;
+		max-width: 250px;
+		margin: 0 auto;
+	}
+
+	// .loading__animated-text
+
+	&__animated-text {
+		margin-bottom: 87px;
+		color: #928F94;
+		text-align: center;
+		font-family: Roboto;
+		font-size: 24px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	// .loading__animated-image
+	@keyframes moveRight {
+		from {
+		  transform: translateX(-0);
+		}
+		to {
+		  transform: translateX(100%); /* Или другой размер, чтобы изображение вышло за пределы экрана */
+		}
+	 }
+
+	&__animated-image {
+		border-bottom: 1px solid #FFCA62;
+		height: 25px;
+	}
+	&__animated-img {
+		max-width: 100%;
+		animation: moveRight 2s linear infinite;
+	}
+	/* Добавьте задержку для второго изображения */
+.loading__animated-img:nth-child(2) {
+	animation-delay: -4s; /* Например, -1s для задержки на 1 секунду */
+ }
+ 
+ /* Добавьте задержку для третьего изображения и так далее */
+ .loading__animated-img:nth-child(3) {
+	animation-delay: -6s; /* Например, -2s для задержки на 2 секунды */
+ }
+ 
+}

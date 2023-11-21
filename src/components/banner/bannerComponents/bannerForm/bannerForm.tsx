@@ -182,7 +182,9 @@ export default function BannerForm() {
             addCity({ city1: debounce, city2: debounce2 });
             addDate({ date1: selectedDate1, date2: selectedDate2 });
             {
-              data && data2 && addId({ id1: data[0]._id, id2: data2[0]._id });
+              data && data2
+                ? addId({ id1: data[0]._id, id2: data2[0]._id })
+                : addId({ id1: "", id2: "" });
             }
           }}
         >

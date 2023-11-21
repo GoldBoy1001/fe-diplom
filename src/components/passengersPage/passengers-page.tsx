@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import AccordionDetails from "../../components/accordionDetails/accordionDetails";
 import PassengersAccordion from "../../components/passengersAccordion/passengersAccordion";
 
@@ -12,6 +13,9 @@ import passangerIcon from "../../img/svg/check-icon.svg";
 
 import { Link, useLocation } from "react-router-dom";
 import Tickets from "../tickets/tickets";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+import { ICity } from "../../models/selectModel";
 
 interface PassengersPageProps {
   visible: boolean;
@@ -19,6 +23,64 @@ interface PassengersPageProps {
 
 export default function PassengersPage({ visible }: PassengersPageProps) {
   const { pathname } = useLocation();
+  const [paymentDetail, setPaymentDetail] = useState({
+    first_name: "",
+    last_name: "",
+    patronymic: "",
+    phone: "",
+    email: "",
+    payment_method: "",
+  });
+  const [formInstances, setFormInstances] = useState<Array<any>>([]);
+  const { addDetail, addPersonalData } = useActions();
+  const seats = useTypedSelector((state) => state.seats);
+  const city = useTypedSelector((state) => state.city);
+  const direction = useTypedSelector((state) => state.direction);
+  //   const personalData = useTypedSelector((state) => state.personalData);
+  const order = useTypedSelector((state) => state.order);
+  const [seat] = seats;
+  const { adultSeats, childrensPlaces } = seat;
+  const { train } =
+    direction && direction.length > 0 && typeof direction[0] !== "string"
+      ? direction[0]
+      : { train: "" };
+
+  const trainNum = train?.replace(/\D/g, "");
+  const { city1 = "", city2 = "" } = city[0] as ICity;
+
+  const handleInputChange = (field: string, value: string) => {
+    setPaymentDetail((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+
+    // Вызываем onChange с обновленными данными
+    // if (onChangeForm) {
+    //   onChangeForm({
+    // 	 ...formData,
+    // 	 [field]: value,
+    //   });
+    // }
+  };
+
+  const adultSeatsNum = parseInt(adultSeats, 10) || 0;
+  const childrensNum = parseInt(String(childrensPlaces), 10) || 0;
+  const dataSeats = Array.from(
+    { length: adultSeatsNum + childrensNum },
+    (_, index) => index + 1
+  );
+
+  //   useEffect(() => {
+  //     addDetail(formInstances);
+  //   }, [formInstances]);
+
+  const handleFormChange = (index: number, data: any) => {
+    const updatedInstances = [...formInstances];
+    updatedInstances[index] = data;
+    setFormInstances(updatedInstances);
+  };
+  console.log(order);
+
   return (
     <div className="passengers-page">
       <div className="passengers-body">
@@ -31,9 +93,9 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                 title={"Туда"}
                 img={arrow}
                 numbers={"№ Поезда"}
-                num={"116С"}
+                num={trainNum}
                 titleDrop={"Название"}
-                subtitle={"Адлер \n Санкт-Петербург"}
+                subtitle={`Адлер \n ${city2}`}
                 visible={true}
                 arrows={trainArrow}
               />
@@ -56,10 +118,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
               <AccordionDetails
                 title={"Пассажиры"}
                 img={passenger}
-                numbers={"2 Взрослых"}
+                numbers={`${adultSeats} Взрослых`}
                 num={"5 840"}
-                titleDrop={"1 Ребенок"}
-                sum={"1 920"}
+                titleDrop={!childrensPlaces ? "" : `${childrensPlaces} Ребенок`}
+                sum={!childrensPlaces ? "" : "1 920"}
                 visible={false}
                 arrows=""
               />
@@ -74,11 +136,20 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
         {visible && (
           <section className="content__passengers">
             <div className="passengers">
-              <PassengersAccordion title={"Пассажир 1"} />
-              <PassengersAccordion title={"Пассажир 2"} />
-              <PassengersAccordion title={"Пассажир 3"} />
+              {dataSeats.map((num, index) => (
+                <PassengersAccordion
+                  title={"Пассажир"}
+                  number={num}
+                  key={num}
+                  onChangeForm={(data: any) => handleFormChange(index, data)}
+                />
+              ))}
               <PassengersAccordion title={"Добавить пассажира"} />
-              <Link to={"/payment"} className="passengers__btn">
+              <Link
+                to={"/payment"}
+                className="passengers__btn"
+                onClick={() => addDetail(formInstances)}
+              >
                 КУПИТЬ БИЛЕТЫ
               </Link>
             </div>
@@ -104,6 +175,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         id="form-personal-surname"
                         className="form-personal__input"
                         placeholder="Фамилия"
+                        value={paymentDetail.last_name}
+                        onChange={(e) =>
+                          handleInputChange("last_name", e.target.value)
+                        }
                       />
                     </div>
                     <div className="form-personal__name">
@@ -118,6 +193,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         id="form-personal-name"
                         className="form-personal__input"
                         placeholder="Имя"
+                        value={paymentDetail.first_name}
+                        onChange={(e) =>
+                          handleInputChange("first_name", e.target.value)
+                        }
                       />
                     </div>
                     <div className="form-personal__patronymic">
@@ -132,6 +211,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         id="form-personal-patronymic"
                         className="form-personal__input"
                         placeholder="Отчество"
+                        value={paymentDetail.patronymic}
+                        onChange={(e) =>
+                          handleInputChange("patronymic", e.target.value)
+                        }
                       />
                     </div>
                     <div className="form-personal__tel">
@@ -146,6 +229,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         id="form-personal-tel"
                         className="form-personal__input"
                         placeholder="+7 ___ ___ __ __"
+                        value={paymentDetail.phone}
+                        onChange={(e) =>
+                          handleInputChange("phone", e.target.value)
+                        }
                       />
                     </div>
                     <div className="form-personal__email">
@@ -160,6 +247,10 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         id="form-personal-email"
                         className="form-personal__input"
                         placeholder="inbox@gmail.ru"
+                        value={paymentDetail.email}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                       />
                     </div>
                   </div>
@@ -173,6 +264,13 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                           <input
                             type="checkbox"
                             className="payment-personal__input"
+                            value={paymentDetail.payment_method}
+                            onChange={(e) =>
+                              handleInputChange(
+                                "payment_method",
+                                e.target.checked ? "online" : "cash"
+                              )
+                            }
                           />
                           <span className="payment-personal__input-text">
                             Онлайн
@@ -193,6 +291,13 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                         <input
                           type="checkbox"
                           className="payment-personal__input"
+                          value={paymentDetail.payment_method}
+                          onChange={(e) =>
+                            handleInputChange(
+                              "payment_method",
+                              e.target.checked ? "cash" : "cash"
+                            )
+                          }
                         />
                         <span className="payment-personal__input-text">
                           Наличными
@@ -203,7 +308,20 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                 </div>
               </form>
             </section>
-            <Link to={"/check"} className="personal-data__btn">
+            <Link
+              to={"/check"}
+              className="personal-data__btn"
+              onClick={() =>
+                addPersonalData({
+                  first_name: paymentDetail.first_name,
+                  last_name: paymentDetail.last_name,
+                  patronymic: paymentDetail.patronymic,
+                  phone: paymentDetail.phone,
+                  email: paymentDetail.email,
+                  payment_method: paymentDetail.payment_method,
+                })
+              }
+            >
               КУПИТЬ БИЛЕТЫ
             </Link>
           </>
@@ -220,7 +338,70 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                 <div className="check-details__passengers-list">
                   <div className="list-passengers">
                     <div className="list-passengers__item">
-                      <div className="item-passenger">
+                      {order.map((passenger, i) => (
+                        <div className="item-passenger" key={i}>
+                          <div className="item-passenger__icon">
+                            <img
+                              className="item-passenger__icon-img"
+                              src={passangerIcon}
+                              alt="Icon"
+                            />
+                            <span className="item-passenger__icon-type">
+                              {passenger.is_adult ? "Детский" : "Взрослый"}
+                            </span>
+                          </div>
+                          <div className="item-passenger__descriptions">
+                            <span className="descriptions-passenger__name">
+                              {`${passenger.last_name} ${passenger.name} ${passenger.patronymic}`}
+                            </span>
+                            <span className="descriptions-passenger__gender">
+                              Пол {""}
+                              {passenger.gender === "woman"
+                                ? "Женский"
+                                : "Мужской"}
+                            </span>
+                            <span className="descriptions-passenger__date">
+                              Дата рождения{" "}
+                              {passenger.birthday.replace(/-/g, ".")}
+                            </span>
+                            <span className="descriptions-passenger__document">
+                              {passenger.document_type === "svid"
+                                ? "Свидетельство о рождении"
+                                : "Паспорт РФ"}{" "}
+                              {""}
+                              {passenger.document_dataSeries} {""}
+                              {passenger.document_data}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                      {/* <div className="item-passenger">
+                        <div className="item-passenger__icon">
+                          <img
+                            className="item-passenger__icon-img"
+                            src={passangerIcon}
+                            alt="Icon"
+                          />
+                          <span className="item-passenger__icon-type">
+                            Взрослый
+                          </span>
+                        </div>
+                        <div className="item-passenger__descriptions">
+                          <span className="descriptions-passenger__name">
+                            Мартынюк Ирина Эдуардовна
+                          </span>
+                          <span className="descriptions-passenger__gender">
+                            Пол женский
+                          </span>
+                          <span className="descriptions-passenger__date">
+                            Дата рождения 17.02.1985
+                          </span>
+                          <span className="descriptions-passenger__document">
+                            Паспорт РФ 4204 380694
+                          </span>
+                        </div>
+                      </div> */}
+                      {/* <div className="item-passenger">
                         <div className="item-passenger__icon">
                           <img
                             className="item-passenger__icon-img"
@@ -271,33 +452,7 @@ export default function PassengersPage({ visible }: PassengersPageProps) {
                             Паспорт РФ 4204 380694
                           </span>
                         </div>
-                      </div>
-                      <div className="item-passenger">
-                        <div className="item-passenger__icon">
-                          <img
-                            className="item-passenger__icon-img"
-                            src={passangerIcon}
-                            alt="Icon"
-                          />
-                          <span className="item-passenger__icon-type">
-                            Взрослый
-                          </span>
-                        </div>
-                        <div className="item-passenger__descriptions">
-                          <span className="descriptions-passenger__name">
-                            Мартынюк Ирина Эдуардовна
-                          </span>
-                          <span className="descriptions-passenger__gender">
-                            Пол женский
-                          </span>
-                          <span className="descriptions-passenger__date">
-                            Дата рождения 17.02.1985
-                          </span>
-                          <span className="descriptions-passenger__document">
-                            Паспорт РФ 4204 380694
-                          </span>
-                        </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="list-passengers__total">
                       <div className="total-passengers">

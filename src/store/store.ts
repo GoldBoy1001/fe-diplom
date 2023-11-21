@@ -9,6 +9,9 @@ import { priceReducer } from './price/price.slice';
 import { timeReducer } from './time/time.slice';
 import { choiceOfPlaceByReducer } from './choiceOfPlace/choiceOfPlace.slice';
 import { directionReducer } from './direction/direction.slice';
+import { seatsReducer } from './seats/seats.slice';
+import { orderReducer } from './order/order.slice';
+import { personalDataReducer } from './personaldata/personalData';
 
 export const store = configureStore({
 reducer: {[ticketApi.reducerPath]: ticketApi.reducer,
@@ -20,7 +23,10 @@ reducer: {[ticketApi.reducerPath]: ticketApi.reducer,
 	price:priceReducer,
 	time:timeReducer,
 	choiceOfPlace:choiceOfPlaceByReducer,
-	direction:directionReducer
+	direction:directionReducer,
+	seats:seatsReducer,
+	order: orderReducer,
+	personalData: personalDataReducer
 },
 middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(ticketApi.middleware),

@@ -10,6 +10,9 @@ import { priceAction } from '../store/price/price.slice'
 import { timeAction } from '../store/time/time.slice'
 import { choiceOfPlaceByAction } from '../store/choiceOfPlace/choiceOfPlace.slice'
 import { directionAction } from '../store/direction/direction.slice'
+import { seatsAction } from '../store/seats/seats.slice'
+import { orderAction } from '../store/order/order.slice'
+import { personalDataAction } from '../store/personaldata/personalData'
 
 const Allactions = {
 	...showByAction,
@@ -20,7 +23,10 @@ const Allactions = {
 	...priceAction,
 	...timeAction,
 	...choiceOfPlaceByAction,
-	...directionAction
+	...directionAction,
+	...seatsAction,
+	...orderAction,
+	...personalDataAction
 }
 
 export const useActions = () => {

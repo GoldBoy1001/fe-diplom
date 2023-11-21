@@ -4,8 +4,12 @@ import mail from "../../img/svg/order-mail.svg";
 import print from "../../img/svg/order-print.svg";
 import document from "../../img/svg/order-docs.svg";
 import { Link } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export default function Order() {
+  const user = useTypedSelector((state) => state.personalData);
+  console.log(user);
+
   return (
     <section className="order">
       <div className="order__title">Благодарим Вас за заказ!</div>
@@ -47,7 +51,9 @@ export default function Order() {
           </div>
           <div className="order-card__appeal">
             <div className="appeal-order">
-              <div className="appeal-order__title">Ирина Эдуардовна!</div>
+              <div className="appeal-order__title">
+                {user[0]?.first_name} {user[0]?.patronymic}{" "}
+              </div>
               <p className="appeal-order__text">
                 Ваш заказ успешно оформлен. В ближайшее время с вами свяжется
                 наш оператор для подтверждения.
